@@ -27,8 +27,8 @@ public class Main {
 //        System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
 
 //        javaList();
-        javaMap();
-
+//        javaMap();
+        javaStack();
     }
 
     private static boolean filter(int read){
@@ -260,9 +260,74 @@ public class Main {
 
         }
     }
+    public static void javaStack () throws IOException {
+        Scanner sc = new Scanner(System.in);
+        char[] opening = {'{','[','('};
+        char[] closing = {'}',']',')'};
+
+        while (sc.hasNext()) {
+            String input=sc.next();
+            Stack<Character> in = new Stack<>();
+            boolean isBalanced = true;
+
+            for (int i=0; i < input.length(); i++){
+                boolean isLast = input.length() - i -1 ==0;
+                for (char s: opening){
+                    // check if opening
+                    if (s == input.charAt(i)){
+                        // push
+                        in.push(input.charAt(i));
+                        // isBalanced = false;
+                    }
+                }
+                for (char s: closing){
+                    // check if closing
+                    if (s == input.charAt(i)){
+                        // check if empty
+                        if (in.isEmpty()){
+                            isBalanced = false;
+                            break;
+                        }
+                        else{
+                            char x = in.pop();
+                            int k = 0;
+                            boolean matchFound = false;
+                            while (k < 3){
+                                if (x == opening[k] && s == closing[k]){
+                                    matchFound = true;
+                                    break;
+                                }
+                                k++;
+                            }
+                            if (!matchFound){
+                                isBalanced = false;
+                                break;
+                            }
+
+                        }
+
+                    }
+                }
 
 
-}
+
+            }
+            if (!in.empty()){
+                isBalanced = false;
+            }
+            System.out.println(isBalanced ? "true":"false");
+
+        }
+
+
+
+        }
+    }
+
+
+
+
+
 
 //public class Main {
 //
