@@ -26,8 +26,8 @@ public class Main {
 //        boolean ret = isAnagram(a,b);
 //        System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
 
-        javaList();
-
+//        javaList();
+        javaMap();
 
     }
 
@@ -230,8 +230,37 @@ public class Main {
     }
 
     public static void javaMap () throws IOException {
+        Scanner in = new Scanner(System.in);
+        int n=in.nextInt();
+        in.nextLine();
+        String name;
+        int phone;
+        Map<String,Integer> contact = new HashMap<>();
 
+        for(int i=0;i<n;i++)
+        {
+            name=in.nextLine();
+            phone=in.nextInt();
+            contact.put(name,phone);
+            in.nextLine();
+
+        }
+        while(in.hasNext())
+        {
+            String s=in.nextLine();
+            if (contact.get(s) == null){
+                System.out.println("Not found");
+            }
+            else {
+                int num = contact.get(s);
+                System.out.println(s+"="+num);
+            }
+
+
+
+        }
     }
+
 
 }
 
